@@ -7,7 +7,7 @@ set -euo pipefail
 # ============================================================
 
 # Change these versions as needed
-PODMAN_VERSION="v4.5"
+PODMAN_VERSION="v5.7"
 CONMON_VERSION="main"
 CRUN_VERSION="main"
 LIBSLIRP_VERSION="stable-4.2"
