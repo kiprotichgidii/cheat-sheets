@@ -15,6 +15,7 @@ SLIRP4NETNS_VERSION="release/0.4"
 FEDORA_VERSION="41"
 CONTAINERS_COMMON_VERSION="0.64.2-1.fc41"
 AMZN_CONMON_VERSION="${CONTAINERS_COMMON_VERSION%%.fc*}"
+PROTOC_VERSION="30.2"
 
 # ============================================================
 #  Directory Setup
@@ -134,9 +135,9 @@ sudo make install
 echo "=> Building netavark..."
 # Download Protoc zip file
 PB_REL="https://github.com/protocolbuffers/protobuf/releases"
-curl -LO $PB_REL/download/v30.2/protoc-30.2-linux-x86_64.zip
+curl -LO $PB_REL/download/v${PROTOC_VERSION}/protoc-${PROTOC_VERSION}-linux-x86_64.zip
 # Unzip the folder to a directory in your $PATH
-unzip protoc-30.2-linux-x86_64.zip -d $HOME/.local
+unzip protoc-${PROTOC_VERSION}-linux-x86_64.zip -d /usr/local
 
 cd ${TOPDIR}
 if [ ! -d netavark ]; then
