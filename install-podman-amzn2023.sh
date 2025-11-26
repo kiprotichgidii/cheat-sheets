@@ -129,6 +129,52 @@ make -j"$(nproc)"
 sudo make install
 
 # ============================================================
+# Build netavark (for Podman 4.8+/5.x)
+# ============================================================
+echo "=> Building netavark..."
+# Download Protoc zip file
+PB_REL="https://github.com/protocolbuffers/protobuf/releases"
+curl -LO $PB_REL/download/v30.2/protoc-30.2-linux-x86_64.zip
+# Unzip the folder to a directory in your $PATH
+unzip protoc-30.2-linux-x86_64.zip -d $HOME/.local
+
+cd ${TOPDIR}
+if [ ! -d netavark ]; then
+  git clone https://github.com/containers/netavark.git
+fi
+
+cd netavark
+
+# Checkout a stable version (optionally)
+# git checkout v1.7.0
+
+# Netavark is written in Rust → install Rust toolchain
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+source $HOME/.cargo/env
+
+# Build netavark
+make build
+
+# Install binary
+sudo install -D -m755 bin/netavark /usr/local/bin/netavark
+
+# ============================================================
+# Build Aardvark-DNS (needed by netavark)
+# ============================================================
+echo "=> Building aardvark-dns..."
+cd ${TOPDIR}
+if [ ! -d aardvark-dns ]; then
+  git clone https://github.com/containers/aardvark-dns.git
+fi
+
+cd aardvark-dns
+
+# Optional: checkout a known stable release
+# git checkout v1.7.0
+make
+sudo install -D -m755 target/release/aardvark-dns /usr/local/bin/aardvark-dns
+
+# ============================================================
 #  Build containers-common (configs + storage setup)
 # ============================================================
 DOWNLOADS="${TOPDIR}/Downloads"
