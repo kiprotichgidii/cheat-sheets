@@ -173,7 +173,7 @@ cd aardvark-dns
 # Optional: checkout a known stable release
 # git checkout v1.7.0
 make
-sudo install -D -m755 target/release/aardvark-dns /usr/local/bin/aardvark-dns
+sudo install -D -m755 targets/release/aardvark-dns /usr/local/bin/aardvark-dns
 
 # ============================================================
 #  Build containers-common (configs + storage setup)
