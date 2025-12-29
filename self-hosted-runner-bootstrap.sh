@@ -51,10 +51,6 @@ sudo dpkg -i packages-microsoft-prod.deb
 sudo apt-get update -y
 sudo apt-get install -y dotnet-sdk-8.0
 
-echo ">>> Installing Ruby and Bundler..."
-sudo apt-get install -y ruby-full
-gem install bundler
-
 echo ">>> Installing PHP..."
 sudo apt-get install -y php-cli php-mbstring php-xml composer
 
