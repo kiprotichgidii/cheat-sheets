@@ -72,5 +72,5 @@ curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 echo ">>> Cleanup..."
 rm -f *.zip *.tar.gz packages-microsoft-prod.deb
 
-echo ">>> Done! Please log out and back in for Docker group changes to apply."
+echo ">>> Done! GitHub Actions Runner Bootstrapping was successful!"
 
